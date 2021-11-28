@@ -1,4 +1,4 @@
-`define TimeExpire 32'd25000000
+define TimeExpire 32'd25000000
 
 module clk_div(clk,rst,div_clk);
 input clk,rst;
