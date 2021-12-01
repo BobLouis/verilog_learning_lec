@@ -28,7 +28,7 @@ module testbench;
 
         else
 
-            $display ("The input does not shift correctly!");
+            $display ("The input does not shift correctly!%b",out);
 
         #20
 
@@ -48,16 +48,12 @@ endmodule
 
 
 
-
-
 module shifter(in, out);
 
-    input       [3:0]   in;
-    output  reg   [3:0]   out;
-    wire [3:0]temp;
+    input     [3:0]   in;
+    output  reg  [3:0]   out;
     /* modify the code here*/    
     always @(in) begin
-        out = in >> 1;
-        out[3] = 1'b1;
+        out = {1'b1,in[3:1]};
     end
 endmodule
