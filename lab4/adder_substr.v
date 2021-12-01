@@ -1,19 +1,9 @@
 module testbench;
-
-
-
     reg [1:0] a, b;
-
     reg select;
-
-
-
     wire [1:0] out;
 
     wire overflow;
-
-
-
     adder_subtractor u1(.a(a),.b(b),.select(select),.out(out),.overflow(overflow));
 
 
@@ -215,29 +205,16 @@ endmodule
 
 
 module adder_subtractor(a, b, select, out, overflow);
-
-
-
     input [1:0] a, b;
-
     input select;
-
-
-
     output reg [1:0] out;
-
     output reg overflow;
-    // wire reg [2:0]res;
-
-
-    /* modify the code here*/
-    always@(a or b or select)
-    if(select == 1'b1)
-        begin 
-            {overflow, out} = a+b;
+    always @(*) begin
+        if(select == 1'b1)begin
+            {overflow,out} = a + b;
         end
-    else
-        begin
-            {overflow, out} = a-b;
+        else begin
+            {overflow,out} = a - b;
         end
+    end
 endmodule
