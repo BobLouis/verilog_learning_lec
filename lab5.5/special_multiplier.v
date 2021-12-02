@@ -297,11 +297,7 @@ endmodule
 module special_multiplier(num, result);
 
     input   [3:0]   num;
-
     output  reg[6:0]   result;
-
-
-
     /* modify the code here */
     always @(num) begin
         case (num)
