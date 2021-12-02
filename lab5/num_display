@@ -1,0 +1,25 @@
+#! /usr/local/Cellar/icarus-verilog/11.0/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/system.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/Cellar/icarus-verilog/11.0/lib/ivl/va_math.vpi";
+S_0x7fefb4c05b90 .scope module, "test" "test" 2 1;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 7 "out1";
+    .port_info 1 /OUTPUT 7 "out2";
+    .port_info 2 /OUTPUT 7 "out3";
+L_0x7fefb4e63008 .functor BUFT 1, C4<1000000>, C4<0>, C4<0>, C4<0>;
+v0x7fefb4c05d00_0 .net "out1", 6 0, L_0x7fefb4e63008;  1 drivers
+L_0x7fefb4e63050 .functor BUFT 1, C4<1111001>, C4<0>, C4<0>, C4<0>;
+v0x7fefb4c15d50_0 .net "out2", 6 0, L_0x7fefb4e63050;  1 drivers
+L_0x7fefb4e63098 .functor BUFT 1, C4<0110000>, C4<0>, C4<0>, C4<0>;
+v0x7fefb4c15df0_0 .net "out3", 6 0, L_0x7fefb4e63098;  1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "num_display.v";

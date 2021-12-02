@@ -1,9 +1,9 @@
 module test(input0,input1,out);
 
-       input [2:0]input0; 
-       input [2:0]input1;
-		 output reg [6:0]out;
-		 reg [4:0]ans;
+   	input [2:0]input0; 
+   	input [2:0]input1;
+	output reg [6:0]out;
+	reg [3:0]ans;
 		 
 
 always@(*)
