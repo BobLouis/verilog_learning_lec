@@ -101,5 +101,5 @@ module test(rst,clk,set,out);
 
 	clk_div u_clk_div(.clk(clk),.rst(rst),.div_clk(div_clk));
 	counter u_counter(.div_clk(div_clk),.rst(rst),.set(set),.cnt(cnt));
-	seven_display (.cnt(cnt),.out(out));
+	seven_display u_seven_display(.cnt(cnt),.out(out));
 endmodule

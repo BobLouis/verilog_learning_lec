@@ -4,11 +4,8 @@ module test(input0,input1,out);
    	input [2:0]input1;
 	output reg [6:0]out;
 	reg [3:0]ans;
-		 
-
 always@(*)
 begin
-   
 	ans=input0+input1;
 	case(ans)
 	     4'd0:
@@ -43,10 +40,6 @@ begin
 		    out=7'b0000110;
 		  4'd15:
 		    out=7'b0111000;
-	
-	endcase
-       
+	endcase    
 end
-
-
 endmodule

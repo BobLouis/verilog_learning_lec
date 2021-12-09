@@ -1,4 +1,4 @@
-define TimeExpire 32'd25000000
+`define TimeExpire 32'd25000000
 
 module clk_div(clk,rst,div_clk);
 input clk,rst;
@@ -20,7 +20,7 @@ always @(posedge clk or negedge rst)
             begin 
                 count <= 32'd0;
                 div_clk <= ~div_clk;
-            end
+            end 
             else
             begin
                 count <= count + 32'd1;
