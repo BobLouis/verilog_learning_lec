@@ -148,27 +148,27 @@ always @(posedge clk or negedge rst) begin
                 end
                 else
                 begin
-                    out_sec <= out_sec + 4'd1;
+                    out_sec <= out_sec - 4'd1;
                 end
             end
-            2'd0:begin
+            2'd1:begin
                 if(out_sec == 0)begin
                     light <= 2'd2;
                     out_sec <= 4'd10;
                 end
                 else
                 begin
-                    out_sec <= out_sec + 4'd1;
+                    out_sec <= out_sec - 4'd1;
                 end
             end
-            2'd0:begin
+            2'd2:begin
                 if(out_sec == 0)begin
                     light <= 2'd0;
                     out_sec <= 4'd15;
                 end
                 else
                 begin
-                    out_sec <= out_sec + 4'd1;
+                    out_sec <= out_sec - 4'd1;
                 end
             end
         endcase   
