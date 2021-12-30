@@ -19,32 +19,32 @@ always @(posedge clk or negedge rst)
     end
 endmodule
 
-module clk_div_VSync(clk,rst,div_clk);
-input clk,rst;
-output reg div_clk;
+// module clk_div_VSync(clk,rst,div_clk);
+// input clk,rst;
+// output reg div_clk;
 
 
-always @(posedge clk or negedge rst)
-    begin 
-        if(!rst)
-        begin 
-            count <= 32'd0;
-            div_clk <= 1'b0;
-        end
-        else
-        begin 
-            if(count == `TimeExpire_VSync)
-            begin 
-                count <= 32'd0;
-                div_clk <= ~div_clk;
-            end
-            else
-            begin
-                count <= count + 32'd1;
-            end
-        end
-    end
-endmodule
+// always @(posedge clk or negedge rst)
+//     begin 
+//         if(!rst)
+//         begin 
+//             count <= 32'd0;
+//             div_clk <= 1'b0;
+//         end
+//         else
+//         begin 
+//             if(count == `TimeExpire_VSync)
+//             begin 
+//                 count <= 32'd0;
+//                 div_clk <= ~div_clk;
+//             end
+//             else
+//             begin
+//                 count <= count + 32'd1;
+//             end
+//         end
+//     end
+// endmodule
 
 module color_control (clk, rst, but_R, but_G, but_B, out_R, out_G, out_B);
     input clk, rst, but_R, but_G, but_B;
@@ -135,14 +135,9 @@ module  VGA_control(clk, rst, but_R, but_G, but_B, out_R, out_G, out_B,Hsync,Vsy
             Hsync <= (counter_x >= 10'd0 && counter_x < 10'd96) ? 1'b0:1'b1;  // hsync low for 96 counts                                                 
             Vsync <= (counter_y >= 10'd0 && counter_y < 10'd2) ? 1'b0:1'b1;   // vsync low for 2 counts
             
-            if(counter_x==10'd96)
-            begin
-                tmp_r <= out_R;
-                tmp_g <= out_G;
-                tmp_b <= out_B;
-            end
+    
 
-            if(counter_x>=10'd97 && counter_x<=10'd144)
+            if(counter_x>=10'd96 && counter_x<=10'd144)
             begin
                 out_R <= 4'd0;
                 out_G <= 4'd0;
@@ -170,7 +165,8 @@ module  VGA_control(clk, rst, but_R, but_G, but_B, out_R, out_G, out_B,Hsync,Vsy
         end      
         always @(posedge but_B ) begin
             tmp_b <= tmp_b + 4'd1;
-
+        end
+        
 endmodule
 
 module test (
@@ -181,5 +177,5 @@ module test (
     output Hsync, Vsync;
     wire div_clk;
     clk_div u_clk_div(.clk(clk),.rst(rst),.div_clk(div_clk));
-    VGA_control u_VGA_control(.clk(clk), .rst(rst), .but_R(but_R), .but_G(but_G), .but_B(but_B), .out_R(out_R), .out_G(out_G), .out_B(out_B),.Hsync(Hsync),.Vsync(Vsync));
+    VGA_control u_VGA_control(.clk(div_clk), .rst(rst), .but_R(but_R), .but_G(but_G), .but_B(but_B), .out_R(out_R), .out_G(out_G), .out_B(out_B),.Hsync(Hsync),.Vsync(Vsync));
 endmodule
